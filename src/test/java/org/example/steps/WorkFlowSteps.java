@@ -1,5 +1,6 @@
 package org.example.steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,8 +27,13 @@ public class WorkFlowSteps extends BaseSteps {
 
     private final ProceedToCheckoutPage proceedToCheckoutPage = new ProceedToCheckoutPage(page);
 
-    private Product product = Product.builder().build();
-    private CartItem cartItem = CartItem.builder().product(product).build();
+    private final Product product = Product.builder().build();
+    private final CartItem cartItem = CartItem.builder().product(product).build();
+
+    @After
+    public void afterAll() {
+        page.close();
+    }
 
     @Given("I am on the Magento website {string}")
     public void iAmOnMagentoWebsite(String url) {

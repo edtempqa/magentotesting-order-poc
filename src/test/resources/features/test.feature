@@ -1,6 +1,6 @@
 Feature: Order Placement on Magento Website
 
-  Scenario Outline: Placing an order with selected product properties
+  Scenario Outline: Placing an order with one selected product properties
     Given I am on the Magento website "<url>"
     When I search for "<product_name>"
     And I open the product page for "<product_name>"
@@ -17,5 +17,6 @@ Feature: Order Placement on Magento Website
     When I open the mini cart
     Then The products are displayed in the Proceed to Checkout overlay
     Examples:
-      | url                                      | product_name     | invalid_quantity | valid_quantity |
-      | https://magento.softwaretestingboard.com | Lando Gym Jacket | -8               | 3              |
+      | url                                      | product_name         | invalid_quantity | valid_quantity |
+      | https://magento.softwaretestingboard.com | Lando Gym Jacket     | -8               | 3              |
+      | https://magento.softwaretestingboard.com | Miko Pullover Hoodie | 0                | 2              |

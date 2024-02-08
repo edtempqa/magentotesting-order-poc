@@ -6,7 +6,6 @@ import lombok.NonNull;
 import org.example.domain.Product;
 
 import java.util.List;
-import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.trim;
 
@@ -27,7 +26,7 @@ public class SearchListPage extends BasePage {
         getProductsLocators().stream()
                 .filter(p -> product.getName().equalsIgnoreCase(trim(p.locator("a.product-item-link").textContent())))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("fdfdfs"))
+                .orElseThrow(() -> new IllegalStateException("There i no product with name " + product.getName()))
                 .click();
     }
 }

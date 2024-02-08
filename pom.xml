@@ -12,8 +12,9 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <threads.number>1</threads.number>
     </properties>
-    
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -34,6 +35,12 @@
             <artifactId>cucumber-junit</artifactId>
             <version>7.15.0</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.15.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
@@ -89,12 +96,17 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-                        <include>**/CucumberRunner*.java</include>
+                        <include>**/TestNgRunner*.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${threads.number}</value>
+                        </property>
+                    </properties>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
